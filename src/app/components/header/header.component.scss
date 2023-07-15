@@ -1,0 +1,15 @@
+.wrap-image {
+    --size: 150px;
+
+    width: var(--size);
+    height: var(--size);
+
+    cursor: pointer;
+
+    .brand-logo {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+    }
+}
