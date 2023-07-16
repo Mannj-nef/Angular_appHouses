@@ -38,5 +38,7 @@ export class HomeComponent implements OnInit {
       (housingLocation) =>
         housingLocation?.city.toLowerCase().includes(value.toLowerCase())
     );
+
+    console.log(this.filteredLocationList);
   }
 }
