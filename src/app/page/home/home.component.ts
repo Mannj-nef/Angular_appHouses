@@ -1,6 +1,6 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HousingService } from 'src/app/services/housing.service';
-import HousingLocation from 'src/app/interfaces/housingLocation';
+import { IHousingLocation } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-home',
@@ -8,16 +8,35 @@ import HousingLocation from 'src/app/interfaces/housingLocation';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  housingLocationList: HousingLocation[] = [];
-  houseingService: HousingService = inject(HousingService);
+  housingLocationList: IHousingLocation[] = [];
+  filteredLocationList: IHousingLocation[] = [];
 
-  constructor() {}
+  constructor(private houseingService: HousingService) {}
 
   ngOnInit(): void {
     this.getHousings();
+    this.fillterHousings();
   }
 
-  getHousings(): void {
-    this.housingLocationList = this.houseingService.getAllHousingLocations();
+  getHousings(): IHousingLocation[] {
+    const housingList = this.houseingService.getAllHousingLocations();
+    this.housingLocationList = housingList;
+
+    return housingList;
+  }
+
+  fillterHousings(): void {
+    this.filteredLocationList = this.getHousings();
+  }
+
+  filterResult(value: string): void {
+    if (!value) {
+      this.filteredLocationList = this.housingLocationList;
+    }
+
+    this.filteredLocationList = this.housingLocationList.filter(
+      (housingLocation) =>
+        housingLocation?.city.toLowerCase().includes(value.toLowerCase())
+    );
   }
 }

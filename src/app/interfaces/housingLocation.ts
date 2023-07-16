@@ -1,4 +1,4 @@
-interface HousingLocation {
+interface IHousingLocation {
   id: number;
   name: string;
   city: string;
@@ -8,4 +8,4 @@ interface HousingLocation {
   wifi: boolean;
   laundry: boolean;
 }
-export default HousingLocation;
+export default IHousingLocation;

@@ -9,7 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './layouts/main/main.component';
 import { HousingLocationComponent } from './modules/home/housing-location/housing-location.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HousingDetailComponent } from './modules/details/housing/housing-detail.component';
 
 @NgModule({
@@ -22,6 +22,7 @@ import { HousingDetailComponent } from './modules/details/housing/housing-detail
     HousingDetailComponent,
   ],
   imports: [
+    ReactiveFormsModule,
     CommonModule,
     BrowserModule,
     AppRoutingModule,
